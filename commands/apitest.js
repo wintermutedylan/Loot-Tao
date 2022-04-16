@@ -14,12 +14,17 @@ module.exports = {
             "dataSource": "HuTaoCarnivalBot",
             "filter": {
                 "userID": message.author.id
+            },
+            "update": {
+                "$set": {
+                    "score": 1000
+                }
             }
         });
 
         var config = {
             method: 'post',
-            url: 'https://data.mongodb-api.com/app/data-ngvmz/endpoint/data/beta/action/findOne',
+            url: 'https://data.mongodb-api.com/app/data-ngvmz/endpoint/data/beta/action/updateOne',
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Request-Headers': '*',
@@ -32,8 +37,9 @@ module.exports = {
             .then(function (response) {
                 
                 
-                message.channel.send(`User: ${userMention(response.data.document.userID)}, Score: ${response.data.document.score}`)
-                console.log(response.data.document.score);
+                ///message.channel.send(`User: ${userMention(response.data.document.userID)}, Score: ${response.data.document.score}`)
+                //console.log(response.data.document.score);
+                console.log(response.data);
             })
             .catch(function (error) {
                 console.log(error);
