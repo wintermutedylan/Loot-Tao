@@ -2,7 +2,7 @@
 const lootModel = require("../models/lootSchema");
 const { userMention, memberNicknameMention, channelMention, roleMention } = require('@discordjs/builders');
 module.exports = {
-    name: 'removecoins',
+    name: 'removeloot',
     aliases: [],
     permissions: [],
     description: "Remove coins from users",
@@ -26,7 +26,7 @@ module.exports = {
                 
             playerData = await lootModel.findOne({ userID: ID});
             if (!playerData) return message.channel.send(`That user doesn't exist`);
-            if (playerData.boxes - amount < 0) return message.channel.send(`you can't remove more Boo Taos than the user has. Try again`);
+            if (playerData.boxes - amount < 0) return message.channel.send(`you can't remove more Boxes than the user has. Try again`);
 
             try {
                 await lootModel.findOneAndUpdate(
