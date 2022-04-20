@@ -46,7 +46,7 @@ module.exports = {
         ];
         
         if (channelID === rollChannel)   { 
-            if (playerData.boxes < boxesRoll) return message.reply("You don't have enough loot boxes.");
+            if (boxesRoll > playerData.boxes) return message.reply("You don't have enough loot boxes.");
             let itemsGet = lucky.itemsBy(arr, 'weight', boxesRoll, { unique: false });
             
             for (let i = 0; i < itemsGet.length; i++){
