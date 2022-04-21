@@ -31,6 +31,12 @@ module.exports = {
         }
         
         let boxesRoll = Number(args[0]);
+        if (!Number.isInteger(boxesRoll)){
+            return message.reply('Please enter a number'); 
+        }
+        if (boxesRoll < 0){
+            return message.reply('Please enter a positive number'); 
+        }
         
         let roleGet = false;
         let fragments = 0;
